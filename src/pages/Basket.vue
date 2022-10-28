@@ -3,5 +3,9 @@
 </script>
 
 <template>
-  <router-view></router-view>
+Basket
 </template>
+
+<style lang="scss">
+
+</style>
