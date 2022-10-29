@@ -1,0 +1,7 @@
+@mixin categoriesNavMax520 {
+  @media screen and (max-width: 520px) {
+    .cat-nav__item-wrapper {
+      flex-basis: 160px;
+    }
+  }
+}

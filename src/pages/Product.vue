@@ -7,7 +7,7 @@ const props = defineProps<Props>()
 </script>
 
 <template>
-Item {{ id }}
+Product {{ id }}
 </template>
 
 <style lang="scss">

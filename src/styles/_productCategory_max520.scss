@@ -1,0 +1,10 @@
+@mixin productCategoryMax520 {
+  @media screen and (max-width: 520px) {
+    .products-cat {
+      flex-direction: column;
+      &__text {
+        padding: 1rem 0 0;
+      }
+    }
+  }
+}

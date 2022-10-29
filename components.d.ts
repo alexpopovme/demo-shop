@@ -7,8 +7,10 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    CategoriesNav: typeof import('./src/components/CategoriesNav.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElTag: typeof import('element-plus/es')['ElTag']
+    ProductsCategory: typeof import('./src/components/ProductsCategory.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

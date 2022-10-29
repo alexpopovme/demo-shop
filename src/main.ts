@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import './style.scss'
+import './styles/main.scss'
 import App from './App.vue'
 
 const router = createRouter({
@@ -12,10 +12,10 @@ const router = createRouter({
       component: () => import('./pages/Home.vue')
     },
     {
-      path: '/item/:id',
-      name: 'Item',
+      path: '/product/:id',
+      name: 'Product',
       props: true,
-      component: () => import('./pages/Item.vue')
+      component: () => import('./pages/Product.vue')
     },
     {
       path: '/basket',
