@@ -2,9 +2,9 @@
 @use 'vars' as *;
 
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto, Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
-  color: #1f1f1f;
+  color: #808080;
 }
 
 * {
@@ -15,11 +15,12 @@
 
 body {
   width: 100%;
+  min-width: 420px;
 }
 
 .container {
   position: relative;
   margin: 0 auto;
-  padding: 0 66px;
+  padding: 1.5rem $mainOffset;
   max-width: 1154px;
 }

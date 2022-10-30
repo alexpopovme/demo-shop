@@ -7,11 +7,25 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Bag: typeof import('./src/components/bag.vue')['default']
     CategoriesNav: typeof import('./src/components/CategoriesNav.vue')['default']
+    CategoryItem: typeof import('./src/components/CategoryItem.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCard: typeof import('element-plus/es')['ElCard']
+    ElCol: typeof import('element-plus/es')['ElCol']
+    ElRow: typeof import('element-plus/es')['ElRow']
     ElTag: typeof import('element-plus/es')['ElTag']
+    MainHeader: typeof import('./src/components/MainHeader.vue')['default']
+    MainLogo: typeof import('./src/components/MainLogo.vue')['default']
+    ProductCard: typeof import('./src/components/ProductCard.vue')['default']
+    ProductItem: typeof import('./src/components/ProductItem.vue')['default']
     ProductsCategory: typeof import('./src/components/ProductsCategory.vue')['default']
+    ProductsHeader: typeof import('./src/components/ProductsHeader.vue')['default']
+    ProductsList: typeof import('./src/components/ProductsList.vue')['default']
+    ProductsListHeader: typeof import('./src/components/ProductsListHeader.vue')['default']
+    ProductsSection: typeof import('./src/components/ProductsSection.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ShoppingBag: typeof import('./src/components/ShoppingBag.vue')['default']
   }
 }

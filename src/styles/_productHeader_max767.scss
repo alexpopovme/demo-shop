@@ -1,0 +1,10 @@
+@mixin productHeaderMax767 {
+  @media screen and (max-width: 767px) {
+    .cat-info {
+      &__wrap,
+      &__items {
+        text-align: center;
+      }
+    }
+  }
+}

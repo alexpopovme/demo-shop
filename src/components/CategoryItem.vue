@@ -6,15 +6,18 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-
 </script>
 
 <template>
-  <div class="products-cat">
-    <div class="products-cat__img-wrapper">
-      <img class="products-cat__img" :src="category.thumbnail.url" alt=""/>
+  <div class="category-item">
+    <div class="category-item__img-wrapper">
+      <img
+        class="category-item__img"
+        :src="category.thumbnail.url"
+        :alt="category.name"
+      />
     </div>
-    <span class="products-cat__text">
+    <span class="category-item__text">
       {{ category.name }}
     </span>
   </div>
@@ -23,9 +26,9 @@ const props = defineProps<Props>()
 <style lang="scss">
 @use '../styles/mixins' as *;
 @use '../styles/vars' as *;
-@use '../styles/productCategory_max520' as *;
+@use '../styles/categoryItem_max520' as *;
 
-.products-cat {
+.category-item {
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
@@ -38,8 +41,7 @@ const props = defineProps<Props>()
   }
   &__img {
     flex-shrink: 0;
-    @include fullSize;
-    object-fit: contain;
+    @include fitImage;
   }
   &__text {
     flex-shrink: 0;
@@ -50,5 +52,5 @@ const props = defineProps<Props>()
   }
 }
 
-@include productCategoryMax520;
+@include categoryItemMax520;
 </style>

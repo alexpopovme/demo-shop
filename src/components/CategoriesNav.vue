@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watchEffect, ref, onUnmounted, onMounted } from 'vue'
 import type { CategoriesData } from '@/types/api'
-import ProductCategory from './ProductsCategory.vue'
+import CategoryItem from './CategoryItem.vue'
 import { debounce } from '@/utils'
 
 interface Props {
@@ -35,7 +35,6 @@ watchEffect(() => {
   if (props.categoriesData) calcItemBasis()
 })
 
-
 onMounted(() => {
   window.addEventListener('resize', resizeHandler)
 })
@@ -47,10 +46,20 @@ onUnmounted(() => {
 
 <template>
   <nav class="cat-nav">
-    <span class="cat-nav__loader" v-if="!categoriesData">Loading categories ...</span>
-    <div class="cat-nav__items-wrapper" v-else>
-      <div class="cat-nav__item-wrapper" v-for="item in categoriesData.items" :key="item.id">
-        <ProductCategory :category="item" @click="calcItemBasis"/>
+    <span
+      class="cat-nav__loader"
+      v-if="!categoriesData">
+      Loading categories ...
+    </span>
+    <div
+      class="cat-nav__items-wrapper"
+      v-else>
+      <div
+        class="cat-nav__item-wrapper"
+        v-for="item in categoriesData.items"
+        :key="item.id"
+      >
+        <CategoryItem :category="item"/>
       </div>
     </div>
   </nav>
@@ -66,9 +75,7 @@ $itemWrapperMargin: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5rem 0;
   border-bottom: 1px solid #e3e3e3;
-  //background-color: #f3f5f6;
   &__items-wrapper {
     display: flex;
     width: 100%;
