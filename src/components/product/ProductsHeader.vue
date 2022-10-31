@@ -1,17 +1,24 @@
 <script setup lang="ts">
+interface Props {
+  headerData: {
+    name: string
+    productCount: number
+  }
+}
 
+const props = defineProps<Props>()
 </script>
 
 <template>
   <header class="cat-info">
      <div class="cat-info__wrap">
        <h1 class="cat-info__name">
-         Category name
+         {{ headerData.name }}
        </h1>
      </div>
      <div class="cat-info__items">
        <span class="cat-info__items-num">
-         176
+         {{ headerData.productCount }}
        </span>
        <span class="cat-info__items-text">
           items found
@@ -21,7 +28,7 @@
 </template>
 
 <style lang="scss">
-@use '../styles/productHeader_max767' as *;
+@use '../../styles/productHeader_max767' as *;
 
 .cat-info {
   margin-bottom: 2rem;

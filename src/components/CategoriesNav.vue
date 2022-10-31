@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { watchEffect, ref, onUnmounted, onMounted } from 'vue'
+import { watchEffect, ref, onUnmounted, onMounted, computed } from 'vue'
 import type { CategoriesData } from '@/types/api'
 import CategoryItem from './CategoryItem.vue'
 import { debounce } from '@/utils'
 
 interface Props {
-   categoriesData: CategoriesData
+  categoriesData: CategoriesData
 }
 
 const props = defineProps<Props>()
-
 const itemBasis = ref('260px')
 
 const calcItemBasis = () => {
@@ -28,7 +27,6 @@ const calcItemBasis = () => {
   const newBasis = width / itemsHalfPerRow
   itemBasis.value = `${newBasis <= 260 ? 260 : newBasis}px`
 }
-
 const resizeHandler = debounce(calcItemBasis, 300)
 
 watchEffect(() => {
@@ -38,7 +36,6 @@ watchEffect(() => {
 onMounted(() => {
   window.addEventListener('resize', resizeHandler)
 })
-
 onUnmounted(() => {
   window.removeEventListener('resize', resizeHandler)
 })
@@ -56,10 +53,13 @@ onUnmounted(() => {
       v-else>
       <div
         class="cat-nav__item-wrapper"
-        v-for="item in categoriesData.items"
+        v-for="(item, index) in categoriesData.items"
         :key="item.id"
       >
-        <CategoryItem :category="item"/>
+        <CategoryItem
+          :category="item"
+          :index="index"
+        />
       </div>
     </div>
   </nav>
@@ -75,7 +75,7 @@ $itemWrapperMargin: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 1px solid #e3e3e3;
+  border-bottom: 1px solid $mainBorderColor;
   &__items-wrapper {
     display: flex;
     width: 100%;

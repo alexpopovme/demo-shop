@@ -10,6 +10,7 @@
 </template>
 
 <style lang="scss">
+@use '../styles/vars' as *;
 @use '../styles/mixins' as *;
 
 .bag {
@@ -25,7 +26,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    color: tomato;
+    color: $accentColor;
     font-size: 1.1rem;
     padding-bottom: 0.1rem;
   }

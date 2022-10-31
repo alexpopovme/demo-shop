@@ -1,4 +1,4 @@
-import { Category } from './common'
+import { Category, Product } from './common'
 
 export interface ApiResCategories {
   total:	number
@@ -6,6 +6,10 @@ export interface ApiResCategories {
   offset:	number
   limit:	number
   items:	[Category]
+}
+
+export interface ApiResProducts extends ApiResCategories{
+  items:	[Product]
 }
 
 export interface CategoriesDataObj {

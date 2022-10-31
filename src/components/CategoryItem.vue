@@ -1,15 +1,30 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { Category } from '@/types/common'
+import { store } from '@/utils/store'
 
 interface Props {
   category: Category
+  index: number
 }
 
 const props = defineProps<Props>()
+
+const setActive = () => {
+  store.setActiveCatIndex(props.index)
+}
+
+const isActive = computed(() => {
+  return props.index === store.getActiveCatIndex()
+})
 </script>
 
 <template>
-  <div class="category-item">
+  <div
+    class="category-item"
+    :class="{'category-item_active': isActive}"
+    @click="setActive"
+  >
     <div class="category-item__img-wrapper">
       <img
         class="category-item__img"
@@ -34,6 +49,12 @@ const props = defineProps<Props>()
   flex-shrink: 0;
   flex-grow: 0;
   @include flexCenter;
+  cursor: pointer;
+  &:hover {
+    color: $accentColor;
+    text-decoration: underline;
+    box-shadow: 0 3px 12px rgba(149, 157, 165, 0.1);
+  }
   &__img-wrapper {
     max-width: 80px;
     flex-shrink: 0;
@@ -49,6 +70,9 @@ const props = defineProps<Props>()
     max-width: 170px;
     padding: 0 0 0 1rem;
     text-align: center;
+  }
+  &_active {
+    color: $accentColor;
   }
 }
 

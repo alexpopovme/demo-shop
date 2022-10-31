@@ -3,7 +3,7 @@
 </script>
 
 <template>
-Basket
+Cart
 </template>
 
 <style lang="scss">

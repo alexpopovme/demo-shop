@@ -1,5 +1,5 @@
 export interface Category {
-  id: string
+  id: number
   name: string
   thumbnail: {
     url: string
@@ -7,4 +7,14 @@ export interface Category {
     height: number
   }
   productCount: number
+}
+
+export interface Product {
+  id: number
+  name: string
+  description: string
+  thumbnailUrl: string
+  hdThumbnailUrl: string
+  price: number
+  defaultDisplayedPriceFormatted: string
 }

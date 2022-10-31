@@ -1,4 +1,5 @@
 import type { ApiResCategories, CategoriesData } from '@/types/api'
+import { ApiResProducts } from '@/types/api'
 
 const storeId = '58958138'
 const apiUrl = `https://app.ecwid.com/api/v3/${storeId}/`
@@ -35,6 +36,15 @@ export const getCategories = async (limit: number|undefined = 10): Promise<Categ
     ]
   }
   return {
-    items: fake.items
+    items: response.items
+  }
+}
+
+export const getProductsByCategory = async (categoryId: number): Promise<CategoriesData> => {
+  const url = `${apiUrl}products?categories=${categoryId}`
+  const response = await getData<ApiResProducts>(url)
+  if (!response) return null
+  return {
+    items: response.items
   }
 }

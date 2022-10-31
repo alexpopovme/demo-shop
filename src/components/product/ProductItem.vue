@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { Product } from '@/types/common'
 
+interface Props {
+  item: Product
+}
+
+const props = defineProps<Props>()
 const isHovering = ref(false)
 </script>
 
@@ -12,19 +18,19 @@ const isHovering = ref(false)
       class="card-main"
       shadow="never"
     >
-      <div class="card-image-wrap">
+      <div class="card-main__image-wrap">
         <img
-          src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
           class="card-main__image"
-          alt=""
+          :src="item.thumbnailUrl"
+          :alt="item.name"
         />
       </div>
       <div class="card-info">
         <span class="card-info__text">
-          Yummy hamburger
+          {{ item.name }}
         </span>
         <span class="card-info__price">
-          1418.00 €
+          {{ item.defaultDisplayedPriceFormatted }}
         </span>
       </div>
       <footer class="card-footer" >
@@ -37,7 +43,7 @@ const isHovering = ref(false)
 </template>
 
 <style lang="scss">
-@use '../styles/mixins' as *;
+@use '../../styles/mixins' as *;
 
 .card-wrap {
   transition: box-shadow 0.2s ease, transform 0.2s ease-out;
@@ -53,6 +59,12 @@ const isHovering = ref(false)
 
 .card-main {
   border: none;
+  &__image-wrap {
+    text-align: center;
+  }
+  &__image {
+    @include fitImage;
+  }
 }
 
 .card-info {
@@ -67,10 +79,6 @@ const isHovering = ref(false)
     font-size: 1.5rem;
     padding: 1rem 0;
   }
-}
-
-.card-image-wrap {
-  text-align: center;
 }
 
 .card-footer {

@@ -1,25 +1,28 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { getCategories } from '@/utils/api'
+import { computed, ref } from 'vue'
 import type { CategoriesData } from '@/types/api'
+import { getCategories } from '@/utils/api'
 import CategoriesNav from '@/components/CategoriesNav.vue'
-import ProductsList from '@/components/ProductsList.vue'
-import ProductsHeader from '@/components/ProductsHeader.vue'
+import ProductsView from '@/components/product/ProductsView.vue'
+import { store } from '@/utils/store'
 
 const categoriesData = ref<CategoriesData>(null)
-onMounted(() => {
-  getCategories()
-    .then((data) => {
-      categoriesData.value = data
-    })
+const activeCategory = computed(() => {
+  if (!categoriesData.value) return null
+  return categoriesData.value.items[store.getActiveCatIndex()]
 })
+
+getCategories()
+  .then((data) => {
+    if (!data) return
+    categoriesData.value = data
+  })
 </script>
 
 <template>
   <CategoriesNav :categoriesData="categoriesData"/>
   <section class="container">
-    <ProductsHeader />
-    <ProductsList />
+    <ProductsView :activeCategory="activeCategory"/>
   </section>
 </template>
 
