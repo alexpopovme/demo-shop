@@ -3,7 +3,8 @@ import { State } from '@/types/state'
 
 class Store {
   private state: State = {
-    activeCatIndex: 0
+    activeCatIndex: 0,
+    itemsInBasket: []
   }
 
   private lsKey = 'state'
@@ -27,13 +28,49 @@ class Store {
     }
   }
 
-  private saveStateToLS = (obj: State) => {
+  private saveStateToLS (obj: State) {
     try {
       const stateStr = JSON.stringify(obj)
       localStorage.setItem(this.lsKey, stateStr)
     } catch (err) {
       console.log('Local storage set error')
     }
+  }
+
+  getItemsInBasket () {
+    return this.state.itemsInBasket
+  }
+
+  addToBasket (id: number) {
+    const item = this.state.itemsInBasket
+      .find((entry) => entry.id === id)
+      ||
+      { id, quantity: 0 }
+
+    item.quantity += 1
+
+    if (item.quantity === 1) {
+      this.state.itemsInBasket.push(item)
+    }
+  }
+
+  removeFromBasket (id: number) {
+    const item = this.state.itemsInBasket.find((entry) => entry.id === id)
+    if (!item) return
+    item.quantity -= 1
+    if (item.quantity === 0) {
+      this.removeAllQuantityFromBasket(id)
+    }
+  }
+
+  removeAllQuantityFromBasket (id: number) {
+    this.state.itemsInBasket = this.state.itemsInBasket.filter((item) => item.id !== id)
+  }
+
+  emptyBasket () {
+     for (const item of this.state.itemsInBasket) {
+       this.removeAllQuantityFromBasket(item.id)
+     }
   }
 
   getActiveCatIndex (): number {

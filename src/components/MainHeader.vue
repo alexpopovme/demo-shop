@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import MainLogo from '@/components/MainLogo.vue'
-import ShoppingBag from '@/components/ShoppingBag.vue'
+import BasketButton from '@/components/BasketButton.vue'
 </script>
 
 <template>
-<header class="main-header">
+<header class="main-header" >
   <MainLogo />
-  <ShoppingBag />
+  <BasketButton />
 </header>
 </template>
 
@@ -19,7 +19,6 @@ import ShoppingBag from '@/components/ShoppingBag.vue'
   width: 100%;
   height: 80px;
   padding: 0.5rem $mainOffset;
-  background-color: #f3f5f6;
+  background-color: $mainGrey;
 }
-
 </style>

@@ -14,7 +14,6 @@ export interface Product {
   name: string
   description: string
   thumbnailUrl: string
-  hdThumbnailUrl: string
   price: number
   defaultDisplayedPriceFormatted: string
 }

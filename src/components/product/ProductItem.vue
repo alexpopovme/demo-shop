@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Product } from '@/types/common'
+import { store } from '@/utils/store'
 
 interface Props {
   item: Product
@@ -34,7 +35,12 @@ const isHovering = ref(false)
         </span>
       </div>
       <footer class="card-footer" >
-        <el-button type="info" round class="card-footer__button">
+        <el-button
+          class="card-footer__button"
+          type="info"
+          round
+          @click="store.addToBasket(item.id)"
+        >
           Add to cart
         </el-button>
       </footer>

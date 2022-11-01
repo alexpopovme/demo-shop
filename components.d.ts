@@ -8,6 +8,9 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Bag: typeof import('./src/components/bag.vue')['default']
+    BasketButton: typeof import('./src/components/BasketButton.vue')['default']
+    BasketItem: typeof import('./src/components/BasketItem.vue')['default']
+    BasketLogo: typeof import('./src/components/BasketButton.vue')['default']
     CategoriesNav: typeof import('./src/components/CategoriesNav.vue')['default']
     CategoryItem: typeof import('./src/components/CategoryItem.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -28,5 +31,6 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ShoppingBag: typeof import('./src/components/ShoppingBag.vue')['default']
+    ShoppingBasket: typeof import('./src/components/basket/ShoppingBasket.vue')['default']
   }
 }
