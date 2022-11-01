@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import MainLogo from '@/components/MainLogo.vue'
-import BasketButton from '@/components/BasketButton.vue'
+import BasketOpenButton from '@/components/basket/BasketOpenButton.vue'
 </script>
 
 <template>
 <header class="main-header" >
   <MainLogo />
-  <BasketButton />
+  <BasketOpenButton />
 </header>
 </template>
 

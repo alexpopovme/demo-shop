@@ -72,8 +72,8 @@ const quantity = computed(() => {
 </template>
 
 <style lang="scss">
-@use '../styles/vars' as *;
-@use '../styles/mixins' as *;
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
 
 .basket-item {
   display: flex;

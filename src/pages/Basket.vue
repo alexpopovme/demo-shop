@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue'
-import BasketItem from '@/components/BasketItem.vue'
+import { useRouter } from 'vue-router'
+import BasketItem from '@/components/basket/BasketItem.vue'
+import BasketHeader from '@/components/basket/BasketHeader.vue'
+import BasketBuyButton from '@/components/basket/BasketBuyButton.vue'
+import BasketPurchased from '@/components/basket/BasketPurchased.vue'
+import BasketTotal from '@/components/basket/BasketTotal.vue'
 import { getProductsByIDs } from '@/utils/api'
 import { store } from '@/utils/store'
 import type { Product } from '@/types/common'
 
-const currency = '₽'
+const router = useRouter()
 const purchased = ref(false)
 const requestedItems = ref<Product[]>([])
 const requestedItemsN = ref(0)
@@ -32,6 +37,9 @@ watchEffect(() => {
 
   if (basketItems.length === 0) {
     updateWithoutRequest([])
+    if (!purchased.value) {
+      router.push({ path: '/' })
+    }
     return
   }
 
@@ -52,26 +60,13 @@ watchEffect(() => {
     })
 })
 
-// Congratulations on your Purchase
 </script>
 
 <template>
-  <header class="basket-header">
-    <div
-      v-if="purchased"
-      class="basket-congrats-text-wrap"
-    >
-      <span class="basket-congrats-text">
-        Congratulations on your purchase!
-      </span>
-    </div>
-    <span
-      v-else
-      class="basket-header__text"
-    >
-      You have {{ requestedItemsN }} item in your basket
-    </span>
-  </header>
+  <BasketHeader
+    :requestedItemsN="requestedItemsN"
+    :purchased="purchased"
+  />
   <main class="basket-main" >
     <div class="basket-main__inner">
       <BasketItem
@@ -80,32 +75,12 @@ watchEffect(() => {
         :item="item"
         :index="index"
       />
-      <div class="basket-total" v-if="total > 0">
-        <span class="basket-total__text">TOTAL:</span>
-        <span class="basket-total__num">{{ total }}{{ currency }}</span>
-      </div>
-      <div
-        class="basket-checkout-button-wrap"
-        v-if="total > 0"
-      >
-        <button
-          class="basket-checkout-button"
-          type="button"
-          @click="handlePurchase"
-        >
-          Go to checkout
-        </button>
-      </div>
-      <div
-        v-if="purchased"
-        class="basket-congrats-image-wrap"
-      >
-        <img
-          class="basket-congrats-image"
-          src="../assets/thanks.png"
-          alt="Thank you"
-        />
-      </div>
+      <BasketTotal :total="total"/>
+      <BasketBuyButton
+        :total="total"
+        @clicked:buy-now="handlePurchase"
+      />
+      <BasketPurchased :purchased="purchased"/>
     </div>
   </main>
 </template>
@@ -113,62 +88,15 @@ watchEffect(() => {
 <style lang="scss">
 @use '../styles/vars' as *;
 @use '../styles/mixins' as *;
-$basketContentPadding: 2rem $mainOffset;
 
-.basket-header {
-  display: flex;
-  align-items: center;
-  padding: $basketContentPadding;
-  &__text {
-    font-size: 1.3rem;
-  }
-}
+
 .basket-main {
+  min-width: 440px;
   display: flex;
   flex-direction: column;
   background: linear-gradient(to bottom, $mainGrey, white);
   &__inner {
     padding: $basketContentPadding;
   }
-}
-.basket-total {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.8rem 2rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 8rem;
-  background-color: rgba($accentColor, 0.15);
-}
-.basket-checkout-button-wrap {
-  margin-top: 1rem;
-}
-.basket-checkout-button {
-  width: 100%;
-  padding: 0.8rem 2rem;
-  border-radius: 8rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  outline: none;
-  border: 1px $mainBorderColor solid;
-  background: none;
-  cursor: pointer;
-  color: inherit;
-  transition: background-color ease 0.2s;
-  &:hover {
-    background-color: $mainColor;
-    color: white
-  }
-}
-.basket-congrats-image-wrap,
-.basket-congrats-text-wrap {
-  flex-grow: 1;
-  text-align: center;
-  font-size: 1.3rem;
-}
-.basket-congrats-image {
-  opacity: 0.8;
-  @include fitImage;
-  max-width: 220px;
 }
 </style>

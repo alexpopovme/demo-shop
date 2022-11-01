@@ -29,8 +29,8 @@ const counter = computed(() => {
 </template>
 
 <style lang="scss">
-@use '../styles/vars' as *;
-@use '../styles/mixins' as *;
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
 
 .bag {
   position: relative;
