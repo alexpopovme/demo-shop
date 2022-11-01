@@ -1,10 +1,12 @@
 import { reactive, watchEffect } from 'vue'
-import { State } from '@/types/state'
+import type { State } from '@/types/state'
+import type { Product } from '@/types/common'
 
 class Store {
   private state: State = {
     activeCatIndex: 0,
-    itemsInBasket: []
+    itemsInBasket: [],
+    activeProduct: null
   }
 
   private lsKey = 'state'
@@ -79,6 +81,15 @@ class Store {
 
   setActiveCatIndex (i: number): void {
     this.state.activeCatIndex = i
+  }
+
+  getActiveProduct (): Product | null {
+    return this.state.activeProduct
+  }
+
+  setActiveProduct (product: Product | undefined): void {
+    if (!product) return
+    this.state.activeProduct = product
   }
 }
 

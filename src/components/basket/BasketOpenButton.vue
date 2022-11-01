@@ -4,13 +4,14 @@ import { useRouter } from 'vue-router'
 import { store } from '@/utils/store'
 
 const router = useRouter()
-const clickHandler = () => {
-  router.push({ path: '/basket' })
-}
 const counter = computed(() => {
   const count = store.getItemsInBasket().length
   return count || ''
 })
+const clickHandler = () => {
+  if (!counter.value) return
+  router.push({ path: '/basket' })
+}
 </script>
 
 <template>
@@ -38,6 +39,7 @@ const counter = computed(() => {
   margin: auto 0;
   cursor: pointer;
   transition: transform 0.2s ease;
+  user-select: none;
   &:hover {
      transform: scale(1.05);
     filter: invert(40%);

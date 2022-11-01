@@ -1,5 +1,6 @@
 import type { ApiResCategories, CategoriesData, ApiResProducts } from '@/types/api'
 import type { ItemInBasket } from '@/types/state'
+import type { Product } from '@/types/common'
 
 const storeId = '58958138'
 const apiBaseUrl = `https://app.ecwid.com/api/v3/${storeId}/`
@@ -41,16 +42,22 @@ export const getProducts = async (url: string): Promise<ApiResProducts> => {
   }
 }
 
-export const getProductsByCategory = async (categoryId: number): Promise<CategoriesData> => {
+export const getProductsByCategory = async (categoryId: number): Promise<ApiResProducts> => {
   const urlData = new URL('products', apiBaseUrl)
   urlData.searchParams.set('categories', `${categoryId}`)
   const url = urlData.href
   return getProducts(url)
 }
 
-export const getProductsByIDs = async (idList: ItemInBasket[]): Promise<CategoriesData> => {
+export const getProductsByIDs = async (idList: ItemInBasket[]): Promise<ApiResProducts> => {
   const urlData = new URL('products', apiBaseUrl)
   urlData.searchParams.set('productId', idList.map((item) => item.id).join())
   const url = urlData.href
   return getProducts(url)
+}
+
+export const getProductByIDs = async (id: number): Promise<Product|null> => {
+  const urlData = new URL(`products/${id}`, apiBaseUrl)
+  const url = urlData.href
+  return getData<Product>(url)
 }

@@ -1,0 +1,15 @@
+@mixin productMax520 {
+  @media screen and (max-width: 520px) {
+    .product {
+      &__row {
+        flex-direction: column;
+      }
+      &__info-wrap {
+        margin-left: 0;
+      }
+      &__description-wrap {
+        margin-top: 2rem;
+      }
+    }
+  }
+}

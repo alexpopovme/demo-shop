@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Product } from '@/types/common'
-import { store } from '@/utils/store'
+import ButtonAddToBasket from '@/components/product/ButtonAddToBasket.vue'
+import ProductInfo from '@/components/product/ProductInfo.vue'
 
 interface Props {
   item: Product
@@ -22,27 +23,17 @@ const isHovering = ref(false)
       <div class="card-main__image-wrap">
         <img
           class="card-main__image"
+          :data-id="item.id"
           :src="item.thumbnailUrl"
           :alt="item.name"
         />
       </div>
-      <div class="card-info">
-        <span class="card-info__text">
-          {{ item.name }}
-        </span>
-        <span class="card-info__price">
-          {{ item.defaultDisplayedPriceFormatted }}
-        </span>
-      </div>
+      <ProductInfo
+        :name="item.name"
+        :price-formatted="item.defaultDisplayedPriceFormatted"
+      />
       <footer class="card-footer" >
-        <el-button
-          class="card-footer__button"
-          type="info"
-          round
-          @click="store.addToBasket(item.id)"
-        >
-          Add to cart
-        </el-button>
+        <ButtonAddToBasket :id="item.id"/>
       </footer>
     </el-card>
   </div>
@@ -70,20 +61,6 @@ const isHovering = ref(false)
   }
   &__image {
     @include fitImage;
-  }
-}
-
-.card-info {
-  display: flex;
-  flex-direction: column;
-  @include flexCenter;
-  &__text {
-    font-weight: bold;
-  }
-  &__price {
-    font-weight: bold;
-    font-size: 1.5rem;
-    padding: 1rem 0;
   }
 }
 

@@ -1,3 +1,5 @@
+import type { Product } from '@/types/common'
+
 export interface ItemInBasket {
   id: number
   quantity: number
@@ -6,4 +8,5 @@ export interface ItemInBasket {
 export interface State {
   activeCatIndex: number
   itemsInBasket: ItemInBasket[]
+  activeProduct: Product | null
 }
