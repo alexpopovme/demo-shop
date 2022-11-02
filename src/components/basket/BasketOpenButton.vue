@@ -16,14 +16,14 @@ const clickHandler = () => {
 
 <template>
   <div
-    class="bag"
+    class="basket-button"
     @click="clickHandler"
   >
     <img
-      class="bag__img"
+      class="basket-button__img"
       src="@/assets/bag.png"
-      alt="bag"/>
-    <div class="bag__counter">
+      alt="Go to basket"/>
+    <div class="basket-button__counter">
       {{ counter }}
     </div>
   </div>
@@ -33,30 +33,28 @@ const clickHandler = () => {
 @use '../../styles/vars' as *;
 @use '../../styles/mixins' as *;
 
-.bag {
+.basket-button {
   position: relative;
-  height: 80%;
+  height: 100%;
+  padding: 0.95rem;
   margin: auto 0;
   cursor: pointer;
   transition: transform 0.2s ease;
   user-select: none;
   &:hover {
-     transform: scale(1.05);
-    filter: invert(40%);
-    box-shadow: 0 2px 0 0 rgba(149, 157, 165, 0.2);
+    @include buttonHoverEffect;
   }
   &__counter {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     color: $accentColor;
-    font-size: 1.1rem;
-    padding-bottom: 0.1rem;
+    font-size: 0.9rem;
+    padding-bottom: 0.9rem;
   }
   &__img {
     @include fitImage;

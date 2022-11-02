@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import type { CategoriesData } from '@/types/api'
 import { getCategories } from '@/utils/api'
-import CategoriesNav from '@/components/CategoriesNav.vue'
+import CategoriesNav from '@/components/category/CategoriesNav.vue'
 import ProductsView from '@/components/product/ProductsView.vue'
 import { store } from '@/utils/store'
 

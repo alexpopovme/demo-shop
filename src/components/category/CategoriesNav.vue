@@ -66,8 +66,8 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss">
-@use '../styles/vars' as *;
-@use '../styles/categoriesNav_max520' as *;
+@use '../../styles/vars' as *;
+@use '../../styles/categoriesNav_max520' as *;
 
 $itemWrapperMargin: 1rem;
 

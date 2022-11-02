@@ -39,9 +39,9 @@ const isActive = computed(() => {
 </template>
 
 <style lang="scss">
-@use '../styles/mixins' as *;
-@use '../styles/vars' as *;
-@use '../styles/categoryItem_max520' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/vars' as *;
+@use '../../styles/categoryItem_max520' as *;
 
 .category-item {
   display: flex;
