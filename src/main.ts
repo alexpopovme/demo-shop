@@ -21,7 +21,12 @@ const router = createRouter({
       path: '/basket',
       name: 'Basket',
       component: () => import('./pages/Basket.vue')
-    }
+    },
+    {
+      path: '/:catchAll(.*)*',
+      name: "Page404",
+      component: () => import('./pages/Page404.vue'),
+    },
   ]
 })
 

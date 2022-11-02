@@ -18,8 +18,10 @@ body {
   min-width: 420px;
 }
 
+
 .app-container {
-  margin-top: $headerHeight;
+  position: relative;
+  padding-top: $headerHeight;
 }
 
 .container {
@@ -27,4 +29,11 @@ body {
   margin: 0 auto;
   padding: 1.5rem $mainOffset;
   max-width: 1154px;
+}
+
+.link {
+  color: $mainColor;
+  &:hover {
+    text-decoration: none;
+  }
 }
