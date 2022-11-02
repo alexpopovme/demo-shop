@@ -29,5 +29,5 @@ Some todos:
 * ...
 
 ### Demo
-
+https://alexpopovme.github.io/demo-shop/
 
