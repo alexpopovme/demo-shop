@@ -11,7 +11,7 @@ interface Props {
 const props = defineProps<Props>()
 const categoryIsAvailable = ref(false)
 const categoryId = ref(0)
-const headerData = ref({})
+const headerData = ref({ name: '', productCount: 0})
 
 watchEffect(() => {
   if (props.activeCategory) {
