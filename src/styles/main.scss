@@ -18,6 +18,10 @@ body {
   min-width: 420px;
 }
 
+.app-container {
+  margin-top: $headerHeight;
+}
+
 .container {
   position: relative;
   margin: 0 auto;

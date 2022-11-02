@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import MainHeader from '@/components/MainHeader.vue'
 import { useRouter } from 'vue-router'
 import { computed } from 'vue'
+import MainHeader from '@/components/MainHeader.vue'
 
 const router = useRouter()
 const displayHeader = computed(() => {
@@ -10,6 +10,8 @@ const displayHeader = computed(() => {
 </script>
 
 <template>
-  <MainHeader v-if="displayHeader"/>
-  <router-view></router-view>
+  <div class="app-container" ref="appContainer">
+    <MainHeader v-if="displayHeader"/>
+    <router-view></router-view>
+  </div>
 </template>

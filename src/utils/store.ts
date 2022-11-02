@@ -6,7 +6,8 @@ class Store {
   private state: State = {
     activeCatIndex: 0,
     itemsInBasket: [],
-    activeProduct: null
+    activeProduct: null,
+    categoriesVisibility: false
   }
 
   private lsKey = 'state'
@@ -90,6 +91,14 @@ class Store {
   setActiveProduct (product: Product | undefined): void {
     if (!product) return
     this.state.activeProduct = product
+  }
+
+  getCategoriesVisibility () {
+    return this.state.categoriesVisibility
+  }
+
+  setCategoriesVisibility (value: boolean) {
+    this.state.categoriesVisibility = value
   }
 }
 

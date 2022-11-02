@@ -18,10 +18,14 @@ import BasketOpenButton from '@/components/basket/BasketOpenButton.vue'
 @use '../styles/vars' as *;
 
 .main-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 80px;
+  height: $headerHeight;
   padding: 0.5rem $mainOffset;
   background-color: $mainGrey;
   &__right-wrap {

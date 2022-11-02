@@ -3,11 +3,15 @@ import { watchEffect, ref, onUnmounted, onMounted, computed } from 'vue'
 import type { CategoriesData } from '@/types/api'
 import CategoryItem from './CategoryItem.vue'
 import { debounce } from '@/utils'
+import { store } from '@/utils/store'
 
 interface Props {
   categoriesData: CategoriesData
 }
 
+const categoriesVisibility = computed(() => {
+  return store.getCategoriesVisibility()
+})
 const props = defineProps<Props>()
 const itemBasis = ref('260px')
 
@@ -42,27 +46,29 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <nav class="cat-nav">
+  <Transition name="slide-fade">
+    <nav class="cat-nav" v-show="categoriesVisibility" >
     <span
       class="cat-nav__loader"
       v-if="!categoriesData">
       Loading categories ...
     </span>
-    <div
-      class="cat-nav__items-wrapper"
-      v-else>
       <div
-        class="cat-nav__item-wrapper"
-        v-for="(item, index) in categoriesData.items"
-        :key="item.id"
-      >
-        <CategoryItem
-          :category="item"
-          :index="index"
-        />
+        class="cat-nav__items-wrapper"
+        v-else>
+        <div
+          class="cat-nav__item-wrapper"
+          v-for="(item, index) in categoriesData.items"
+          :key="item.id"
+        >
+          <CategoryItem
+            :category="item"
+            :index="index"
+          />
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </Transition>
 </template>
 
 <style lang="scss">
@@ -89,4 +95,18 @@ $itemWrapperMargin: 1rem;
 }
 
 @include categoriesNavMax520;
+
+.slide-fade-enter-active {
+  transition: all 0.2s ease-in;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.2s ease-out;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(-30px);
+  opacity: 0;
+}
 </style>

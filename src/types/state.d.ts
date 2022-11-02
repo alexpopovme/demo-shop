@@ -9,4 +9,5 @@ export interface State {
   activeCatIndex: number
   itemsInBasket: ItemInBasket[]
   activeProduct: Product | null
+  categoriesVisibility: boolean
 }

@@ -1,15 +1,23 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { store } from '@/utils/store'
 
 const route = useRoute()
 const displayCategoryButton = computed(() => {
   return route.name === 'Home'
 })
+
+const handleCategoryButtonClick = () => {
+  store.setCategoriesVisibility(!store.getCategoriesVisibility())
+}
 </script>
 
 <template>
-  <div class="category-button" v-if="displayCategoryButton">
+  <div class="category-button"
+       v-if="displayCategoryButton"
+       @click="handleCategoryButtonClick"
+  >
     <img
       class="category-button__img"
       src="@/assets/menu.png" alt="logo"/>
