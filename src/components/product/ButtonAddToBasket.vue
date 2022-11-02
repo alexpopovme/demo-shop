@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { store } from '@/utils/store'
-import type { Product } from '@/types/common'
 
 interface Props {
   id: number
@@ -10,6 +9,7 @@ const props = defineProps<Props>()
 
 <template>
   <el-button
+    class="button-add-to-basket"
     type="info"
     round
     @click="store.addToBasket(id)"
@@ -19,5 +19,9 @@ const props = defineProps<Props>()
 </template>
 
 <style lang="scss">
+@use '../../styles/vars' as *;
 
+.button-add-to-basket {
+  width: $productButtonsWidth;
+}
 </style>

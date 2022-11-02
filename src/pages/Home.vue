@@ -25,7 +25,3 @@ getCategories()
     <ProductsView :activeCategory="activeCategory"/>
   </section>
 </template>
-
-<style lang="scss">
-
-</style>

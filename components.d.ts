@@ -17,6 +17,8 @@ declare module '@vue/runtime-core' {
     BasketPurchased: typeof import('./src/components/basket/BasketPurchased.vue')['default']
     BasketTotal: typeof import('./src/components/basket/BasketTotal.vue')['default']
     ButtonAddToBasket: typeof import('./src/components/product/ButtonAddToBasket.vue')['default']
+    ButtonBack: typeof import('./src/components/product/ButtonBack.vue')['default']
+    ButtonBackToHome: typeof import('./src/components/product/ButtonBackToHome.vue')['default']
     CategoriesNav: typeof import('./src/components/category/CategoriesNav.vue')['default']
     CategoryButton: typeof import('./src/components/category/CategoryButton.vue')['default']
     CategoryItem: typeof import('./src/components/category/CategoryItem.vue')['default']

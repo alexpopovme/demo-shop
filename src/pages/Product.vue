@@ -1,28 +1,33 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import { store } from '@/utils/store'
 import { sanitizeStr } from '@/utils'
 import { getProductByIDs } from '@/utils/api'
 import type { Product } from '@/types/common'
 import ProductInfo from '@/components/product/ProductInfo.vue'
 import ButtonAddToBasket from '@/components/product/ButtonAddToBasket.vue'
+import ButtonBack from '@/components/product/ButtonBack.vue'
 
+// router gives us a string
 interface Props {
-  id: number
+  id: string
 }
 
 const props = defineProps<Props>()
+const id = computed(() => {
+  return parseInt(props.id, 10)
+})
 const product = ref<Product|null>()
 
 watchEffect(() => {
   const activeProduct = store.getActiveProduct()
-  if (activeProduct?.id === props.id) {
+  if (activeProduct?.id === id.value) {
     product.value = store.getActiveProduct()
     return
   }
   // fetch product in case of loading from direct url with id
   // that is not equal to the current activeProduct in store
-  getProductByIDs(props.id)
+  getProductByIDs(id.value)
     .then((data) => {
       product.value = data
       if (product.value) {
@@ -47,6 +52,7 @@ watchEffect(() => {
           :price-formatted="product.defaultDisplayedPriceFormatted"
         />
         <ButtonAddToBasket :id="product.id"/>
+        <ButtonBack />
       </div>
     </div>
     <div class="product__description-wrap">
@@ -79,6 +85,8 @@ watchEffect(() => {
     flex-shrink: 0;
   }
   &__info-wrap {
+    display: flex;
+    flex-direction: column;
     flex-basis: 35%;
     min-width: 180px;
     padding-top: 1rem;

@@ -27,6 +27,7 @@ const props = defineProps<Props>()
   display: flex;
   align-items: center;
   padding: $basketContentPadding;
+  margin-top: -$headerHeight;
   &__text {
     font-size: 1.3rem;
   }

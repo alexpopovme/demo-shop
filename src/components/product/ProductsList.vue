@@ -12,7 +12,7 @@ interface Props {
 
 const router = useRouter()
 const props = defineProps<Props>()
-const productList = ref<[Product]>()
+const productList = ref<Product[]>()
 
 watchEffect(() => {
   getProductsByCategory(props.categoryId)
@@ -24,12 +24,14 @@ watchEffect(() => {
 
 const handleCardClick = (ev: Event) => {
   const target = ev.target as HTMLElement
-  const id = target.dataset.id
-  if (!id || !productList.value) return
+  const idStr = target.dataset.id
+  if (!idStr || !productList.value) return
+
+  const id = parseInt(idStr, 10)
 
   const activeProduct = productList.value
     .find((entry) => {
-      return entry.id === parseInt(id, 10)
+      return entry.id === id
     })
 
   store.setActiveProduct(activeProduct)

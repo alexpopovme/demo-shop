@@ -47,10 +47,6 @@ const isHovering = ref(false)
   &:hover {
     box-shadow: 0 8px 18px 6px rgba(19, 19, 19, 0.1);
     transform: translateY(-1.5em);
-    & .card-footer {
-      visibility: visible;
-      opacity: 1;
-    }
   }
 }
 
@@ -66,8 +62,5 @@ const isHovering = ref(false)
 
 .card-footer {
   text-align: center;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity .4s ease-out;
 }
 </style>
