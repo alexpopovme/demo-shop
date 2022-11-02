@@ -25,6 +25,7 @@ Some todos:
 * Add pagination for product list or infinite scroll with lazy loading.
 * Reconstruct buttons components to be more reusable.
 * Add loading indicator animation.
+* Display error messages
 * ...
 
 ### Demo

@@ -6,7 +6,7 @@ import { debounce } from '@/utils'
 import { store } from '@/utils/store'
 
 interface Props {
-  categoriesData: CategoriesData
+  categoriesData: CategoriesData|void
 }
 
 const categoriesVisibility = computed(() => {

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import MainHeader from '@/components/MainHeader.vue'
 
-const router = useRouter()
+const route = useRoute()
 const displayHeader = computed(() => {
-  return router.currentRoute.value.path !== '/basket'
+  return route.name !== 'Basket'
 })
 </script>
 

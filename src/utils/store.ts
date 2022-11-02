@@ -6,7 +6,6 @@ class Store {
   private state: State = {
     activeCatIndex: 0,
     itemsInBasket: [],
-    activeProduct: null,
     categoriesVisibility: false
   }
 
@@ -84,7 +83,7 @@ class Store {
     this.state.activeCatIndex = i
   }
 
-  getActiveProduct (): Product | null {
+  getActiveProduct (): Product | undefined {
     return this.state.activeProduct
   }
 

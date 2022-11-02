@@ -38,7 +38,7 @@ watchEffect(() => {
   if (basketItems.length === 0) {
     updateWithoutRequest([])
     if (!purchased.value) {
-      router.push({ path: '/' })
+      router.push({ name: 'Home' })
     }
     return
   }

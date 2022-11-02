@@ -17,7 +17,7 @@ const props = defineProps<Props>()
 const id = computed(() => {
   return parseInt(props.id, 10)
 })
-const product = ref<Product|null>()
+const product = ref<Product>()
 
 watchEffect(() => {
   const activeProduct = store.getActiveProduct()
@@ -29,10 +29,11 @@ watchEffect(() => {
   // that is not equal to the current activeProduct in store
   getProductByIDs(id.value)
     .then((data) => {
-      product.value = data
-      if (product.value) {
-        store.setActiveProduct(product.value)
+      if(!data) {
+
       }
+      product.value = data
+      store.setActiveProduct(product.value)
     })
 })
 </script>

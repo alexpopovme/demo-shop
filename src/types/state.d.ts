@@ -8,6 +8,6 @@ export interface ItemInBasket {
 export interface State {
   activeCatIndex: number
   itemsInBasket: ItemInBasket[]
-  activeProduct: Product | null
+  activeProduct?: Product
   categoriesVisibility: boolean
 }

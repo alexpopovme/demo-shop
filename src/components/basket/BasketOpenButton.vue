@@ -10,7 +10,7 @@ const counter = computed(() => {
 })
 const clickHandler = () => {
   if (!counter.value) return
-  router.push({ path: '/basket' })
+  router.push({ name: 'Basket' })
 }
 </script>
 

@@ -8,13 +8,10 @@ export interface ApiResCategories {
   items:	[Category]
 }
 
-export interface ApiResProductsObj {
+export interface ApiResProducts {
   items:	Product[]
 }
 
-export interface CategoriesDataObj {
+export interface CategoriesData {
   items: ApiResCategories.items
 }
-
-export type CategoriesData = CategoriesDataObj | null
-export type ApiResProducts = ApiResProductsObj | null

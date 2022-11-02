@@ -6,7 +6,7 @@ import CategoriesNav from '@/components/category/CategoriesNav.vue'
 import ProductsView from '@/components/product/ProductsView.vue'
 import { store } from '@/utils/store'
 
-const categoriesData = ref<CategoriesData>(null)
+const categoriesData = ref<CategoriesData|void>()
 const activeCategory = computed(() => {
   if (!categoriesData.value) return null
   return categoriesData.value.items[store.getActiveCatIndex()]
