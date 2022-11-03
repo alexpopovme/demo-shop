@@ -33,10 +33,9 @@ const quantity = computed(() => {
       <span class="basket-item-header__name">
         {{ item.name }}
       </span>
-      <button
+      <button class="basket-item-header__delete"
         @click="store.removeAllQuantityFromBasket(item.id)"
         type="button"
-        class="basket-item-header__delete"
       >
         &#9587;
       </button>
@@ -74,6 +73,7 @@ const quantity = computed(() => {
 <style lang="scss">
 @use '../../styles/vars' as *;
 @use '../../styles/mixins' as *;
+@use '../../styles/basketItem_max520' as *;
 
 .basket-item {
   display: flex;
@@ -81,7 +81,7 @@ const quantity = computed(() => {
   &__image-wrap {
     width: 140px;
     height: 140px;
-    margin-right: 1.5rem;
+    margin: 0 1.5rem 0 0;
   }
   &__image {
     @include fitImage;
@@ -115,6 +115,7 @@ const quantity = computed(() => {
     border: none;
     padding: 0 0.3rem;
     cursor: pointer;
+    margin-left: 0.8rem;
   }
 }
 
@@ -125,6 +126,7 @@ const quantity = computed(() => {
   &__price {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
   }
   &__quantity-text,
   &__price-text {
@@ -151,4 +153,6 @@ const quantity = computed(() => {
     }
   }
 }
+
+@include basketItemMax520;
 </style>

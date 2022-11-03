@@ -91,7 +91,7 @@ watchEffect(() => {
 
 
 .basket-main {
-  min-width: 440px;
+  //min-width: 440px;
   display: flex;
   flex-direction: column;
   background: linear-gradient(to bottom, $mainGrey, white);

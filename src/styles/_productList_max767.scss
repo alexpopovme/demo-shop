@@ -1,0 +1,7 @@
+@mixin productListMax767 {
+  @media screen and (max-width: 767px) {
+    .card-wrap {
+      padding: 0 15%;
+    }
+  }
+}

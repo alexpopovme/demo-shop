@@ -57,5 +57,9 @@ const handleCardClick = (ev: Event) => {
 </template>
 
 <style lang="scss">
+@use '../../styles/productList_max767' as *;
+@use '../../styles/productList_max520' as *;
 
+@include productListMax767;
+@include productListMax520;
 </style>

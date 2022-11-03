@@ -1,0 +1,11 @@
+@mixin basketItemMax520 {
+  @media screen and (max-width: 520px) {
+    .basket-item {
+      flex-direction: column;
+      &__image-wrap {
+        width: 100%;
+        margin: 0 0 1.5rem 0;
+      }
+    }
+  }
+}
